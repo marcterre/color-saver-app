@@ -1,27 +1,22 @@
-export default function Form({ value, addColor }) {
+export default function Form({ addColor, hexCode }) {
   function handleSubmit(event) {
     event.preventDefault();
 
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
+    console.log(data);
     addColor(data);
 
-    event.target.reset();
-    event.target.colorpicker.focus();
+    // event.target.reset();
   }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label htmlFor="colorpicker">
-        <input
-          name="colorpicker"
-          type="color"
-          id="colorpicker"
-          value={value}
-        ></input>
+        <input name="colorpicker" type="color" id="colorpicker"></input>
       </label>
-      <p>{value}</p>
-      <button type="submit" onClick={handleSubmit}></button>
+      <p>{hexCode}</p>
+      <button type="submit">Log</button>
     </form>
   );
 }
