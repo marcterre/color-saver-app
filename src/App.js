@@ -10,6 +10,8 @@ function App() {
   const [colors, setColors] = useLocaStorageState("colors", {
     defaultValue: [],
   });
+  const [showResults, setShowResults] = useState(false);
+  // const [copyButton, setCopyButton] = useState(false);
 
   function addColor(newColors) {
     console.log("add color");
@@ -41,10 +43,19 @@ function App() {
     setColors((oldColors) => oldColors.filter((color) => color.id !== id));
   }
 
+  function HandleCopy(event) {
+    navigator.clipboard.writeText(event.target.innerText);
+    console.log(event.target);
+  }
+
   return (
     <>
-      <Form addColor={addColor} hexCode={colors.value} />
-      <ColorsEntry colors={colors} onDelete={handleDelete} />
+      <Form addColor={addColor} hexCode={colors.value} colors={colors} />
+      <ColorsEntry
+        colors={colors}
+        onDelete={handleDelete}
+        onCopy={HandleCopy}
+      />
     </>
   );
 }

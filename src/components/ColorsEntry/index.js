@@ -1,10 +1,6 @@
 import styled from "styled-components";
 
-export default function ColorsEntry({ colors, onDelete }) {
-  // const colorBackground = colors.forEach(
-  //   (color) => (style = { backgroundColor: { colors } })
-  // );
-
+export default function ColorsEntry({ colors, onDelete, onCopy }) {
   return (
     <ul>
       {colors.map((color) => (
@@ -13,8 +9,12 @@ export default function ColorsEntry({ colors, onDelete }) {
             {" "}
             x{" "}
           </button>
-          <Div style={{ backgroundColor: color.colorpicker }}></Div>
-          <p>{color.colorpicker}</p>
+          <Div style={{ backgroundColor: color.colorpicker }}>
+            {" "}
+            <button type="button" onClick={onCopy}>
+              <P>{color.colorpicker}</P>
+            </button>
+          </Div>
         </li>
       ))}
     </ul>
@@ -22,6 +22,14 @@ export default function ColorsEntry({ colors, onDelete }) {
 }
 
 const Div = styled.div`
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const P = styled.p`
+  color: black;
+  background: lightblue;
 `;

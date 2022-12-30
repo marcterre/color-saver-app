@@ -1,4 +1,4 @@
-export default function Form({ addColor, hexCode }) {
+export default function Form({ addColor, hexCode, colors }) {
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -17,8 +17,13 @@ export default function Form({ addColor, hexCode }) {
       </label>
       <label htmlFor="hexCode">
         Type in your Hex Code or copy your choosen color
-        <input type="text" name="hexCode" id="hexCode">
-          {hexCode}
+        <input
+          type="text"
+          name="hexCode"
+          id="hexCode"
+          placeholder={colors.colorpicker}
+        >
+          {colors.colorpicker}
         </input>{" "}
       </label>
       <button type="submit">Add</button>
