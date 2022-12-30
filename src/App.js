@@ -2,11 +2,14 @@ import Form from "./components/Form";
 import ColorsEntry from "./components/ColorsEntry";
 
 import { useEffect, useState } from "react";
+import useLocaStorageState from "use-local-storage-state";
 
 // const url = "https://www.thecolorapi.com/id?hex=<hexcode here>";
 
 function App() {
-  const [colors, setColors] = useState([]);
+  const [colors, setColors] = useLocaStorageState("colors", {
+    defaultValue: [],
+  });
 
   function addColor(newColors) {
     console.log("add color");
