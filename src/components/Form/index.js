@@ -15,8 +15,13 @@ export default function Form({ addColor, hexCode }) {
       <label htmlFor="colorpicker">
         <input name="colorpicker" type="color" id="colorpicker"></input>
       </label>
-      <p>{hexCode}</p>
-      <button type="submit">Log</button>
+      <label htmlFor="hexCode">
+        Type in your Hex Code or copy your choosen color
+        <input type="text" name="hexCode" id="hexCode">
+          {hexCode}
+        </input>{" "}
+      </label>
+      <button type="submit">Add</button>
     </form>
   );
 }
